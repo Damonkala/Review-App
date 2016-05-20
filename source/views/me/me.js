@@ -5,7 +5,9 @@ angular.module('scaffoldApp')
 	if(!$auth.isAuthenticated()){
 	 return $state.go('home');
  }
-
+$scope.addBook = function(bookInfo){
+	console.log("Book Info: ", bookInfo);
+}
  $http.get('/authors/me')
  .then(function(res) {
 	 $scope.user = res.data;
