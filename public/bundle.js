@@ -84,10 +84,11 @@ angular.module('scaffoldApp')
 	 return $state.go('home');
  }
 $scope.addBook = function(bookInfo){
-	// console.log("Book Info: ", bookInfo);
-	$http.post('books/', bookInfo)
+	var book = bookInfo;
+	book.author = $scope.user.id;
+	console.log(book);
+	$http.post('books/', book)
 	.then(function(res) {
-		console.log("YES DOCTOR ", res);
 	})
 }
  $http.get('/authors/me')

@@ -9,6 +9,7 @@ router.get('/me', ensureAuthenticated, function(req, res) {
   Author.findById(req.user, function(err, author){
 		console.log("YOUUU", author);
     res.send({
+      id: author._id,
       displayName: author.displayName,
 			emailAddress: author.email,
       picture: author.picture,
