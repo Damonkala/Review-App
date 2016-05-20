@@ -22,6 +22,7 @@ app.use(express.static('public'));
 
 // ROUTES
 app.use('/authors', require('./routes/authors'))
+app.use('/books', require('./routes/books'))
 app.use('/auth', require('./routes/auth'))
 
 app.use('/', function(req, res){

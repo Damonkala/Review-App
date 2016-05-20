@@ -6,7 +6,11 @@ angular.module('scaffoldApp')
 	 return $state.go('home');
  }
 $scope.addBook = function(bookInfo){
-	console.log("Book Info: ", bookInfo);
+	// console.log("Book Info: ", bookInfo);
+	$http.post('books/', bookInfo)
+	.then(function(res) {
+		console.log("YES DOCTOR ", res);
+	})
 }
  $http.get('/authors/me')
  .then(function(res) {
