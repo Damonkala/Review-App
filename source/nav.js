@@ -11,5 +11,7 @@ angular.module('scaffoldApp')
     $auth.logout();
     $state.go('home');
   };
-
+  $scope.authenticate = function(provider) {
+		 $auth.authenticate(provider);
+	 };
 });

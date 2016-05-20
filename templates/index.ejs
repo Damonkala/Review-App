@@ -6,16 +6,17 @@
     <title>scaffold</title>
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="scss/style.css">
   </head>
   <body ng-app="scaffoldApp">
     <h1>Index</h1>
     <p>CHANGES</p>
     <div ng-controller="navCtrl">
       <span ng-if="isAuthenticated()">
-        <button ui-sref="me" class="btn btn-default navbar-btn">profile</button>
-        <button ui-sref="authorsList" class="btn btn-default navbar-btn">users</button>
-        <button ng-click="logout()" class="btn btn-default navbar-btn">logout</button></span>
+        <span ui-sref="me" class="navBut">profile</span>
+        <span ui-sref="authorsList" class="navBut">users</span>
+        <span ng-click="logout()" class="navBut">logout</span></span>
+        <span ng-if="!isAuthenticated()" ng-click="authenticate('facebook')">Facebook Signin</span>
     </div>
     <div ui-view></div>
 
