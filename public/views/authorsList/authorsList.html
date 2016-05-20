@@ -1,9 +1,10 @@
 <h1>All Authors</h1>
 
 <div ng-repeat="author in authorlist track by $index">
-  <div ng-click="openProfile(author._id)">
+  <div ng-click="openProfile(author._id)" class="userSquare">
     {{author.displayName}}
     <img class="thumbnail" ng-src="{{author.picture}}" alt="" />
-    {{author.books.length}}
+    <br>
+    {{author.books.length}} books that need reviewing.
   </div>
 </div>

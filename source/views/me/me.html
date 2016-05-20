@@ -10,22 +10,30 @@
 <div>
   <img class='avatar' ng-src="{{user.picture}}" alt="">
 </div>
-<div ng-repeat="book in user.books">
-  <a href="{{book.url}}">{{book.name}}</a>
-  <img ng-src="{{book.picture}}" alt="">
-</div>
-<form ng-submit="addBook(bookInfo); $event.stopPropagation();">
+<form ng-submit="addBook(bookInfo); $event.stopPropagation();" class="addBookForm">
   <label for="Name">Name</label>
-  <input type="text" ng-model="bookInfo.name" name="Name">
+  <input type="text" ng-model="bookInfo.name" name="Name"><br>
   <label for="Url">Url</label>
-  <input type="text" ng-model="bookInfo.url" name="Url">
+  <input type="text" ng-model="bookInfo.url" name="Url"><br>
   <label for="Picture">Picture</label>
-  <input type="text" ng-model="bookInfo.picture" name="Picture">
-  <select ng-model="bookInfo.reviewsWanted">
+  <input type="text" ng-model="bookInfo.picture" name="Picture"><br>
+  <label for="ReviewsWanted">Reviews Wanted</label>
+  <select ng-model="bookInfo.reviewsWanted" name="ReviewsWanted">
     <option value="5">5</option>
     <option value="10">10</option>
     <option value="15">15</option>
     <option value="20">20</option>
-  </select>
-  <input type="submit" id="submit" value="Submit" />
+  </select><br>
+  <p id="description">
+    <label for="Description">Description</label>
+    <br>
+    <textarea name="Description" rows="8" cols="40" ></textarea>
+  </p>
+  <p>
+    <input type="submit" id="submit" value="Submit" class="goodButton"/>
+  </p>
 </form>
+<div ng-repeat="book in user.books">
+  <a href="{{book.url}}">{{book.name}}</a>
+  <img ng-src="{{book.picture}}" alt="">
+</div>
