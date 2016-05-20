@@ -6,25 +6,24 @@ var ensureAuthenticated = require('../config/ensureAuthenticated');
 var Author = require('../models/author');
 
 router.get('/me', ensureAuthenticated, function(req, res) {
-  Author.findById(req.user, function(err, author){
+  Author.findById(req.user).populate('books').exec(function(err, author){
 		console.log("YOUUU", author);
     res.send({
       id: author._id,
       displayName: author.displayName,
 			emailAddress: author.email,
       picture: author.picture,
-      conversations: author.conversations
+      conversations: author.conversations,
+      books: author.books
     });
   })
 });
 router.get('/profilePage', ensureAuthenticated, function(req, res) {
-  Author.findById(req.user, function(err, author){
-		console.log("YOUUU", author);
+  Author.findById(req.user).populate('books').exec(function(err, author){
     res.send({
       displayName: author.displayName,
-			emailAddress: author.email,
       picture: author.picture,
-      conversations: author.conversations
+      books: author.books
     });
   })
 });

@@ -8,16 +8,18 @@ angular.module('scaffoldApp')
 $scope.addBook = function(bookInfo){
 	var book = bookInfo;
 	book.author = $scope.user.id;
-	console.log(book);
 	$http.post('books/', book)
 	.then(function(res) {
+		$scope.init();
 	})
 }
- $http.get('/authors/me')
- .then(function(res) {
-	 $scope.user = res.data;
-	 console.log('res:', res);
- }, function(err) {
-	 console.error(err);
- });
+$scope.init = function(){
+	$http.get('/authors/me')
+	.then(function(res) {
+		$scope.user = res.data;
+	}, function(err) {
+		console.error(err);
+	});
+}
+$scope.init();
 })
