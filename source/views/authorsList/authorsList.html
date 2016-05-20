@@ -1,6 +1,8 @@
 <h1>All Authors</h1>
 
 <div ng-repeat="author in authorlist track by $index">
-  {{author.displayName}}
-  <img class="thumbnail" ng-src="{{author.picture}}" alt="" />
+  <div ng-click="openProfile(author._id)">
+    {{author.displayName}}
+    <img class="thumbnail" ng-src="{{author.picture}}" alt="" />
+  </div>
 </div>
