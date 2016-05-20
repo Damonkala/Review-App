@@ -67,16 +67,6 @@ $scope.openProfile = function(author){
 'use strict';
 
 angular.module('scaffoldApp')
-.controller('homeCtrl', function($scope, $auth){
-	console.log('homeCtrl');
-	$scope.authenticate = function(provider) {
-		 $auth.authenticate(provider);
-	 };
-})
-
-'use strict';
-
-angular.module('scaffoldApp')
 .controller('meCtrl', function($scope, $auth, $http, $state){
 	if(!$auth.isAuthenticated()){
 	 return $state.go('home');
@@ -98,4 +88,14 @@ $scope.init = function(){
 	});
 }
 $scope.init();
+})
+
+'use strict';
+
+angular.module('scaffoldApp')
+.controller('homeCtrl', function($scope, $auth){
+	console.log('homeCtrl');
+	$scope.authenticate = function(provider) {
+		 $auth.authenticate(provider);
+	 };
 })
