@@ -1,0 +1,21 @@
+<button ng-click="magicButton()">Magic button</button>
+<h1>{{author.displayName}}</h1>
+<img ng-src="{{author.picture}}" alt="">
+
+<h1>{{author.displayName}}'s books:</h1>
+
+<div ng-repeat="book in author.books">
+  <form ng-submit="sendRequest(requestInfo, book._id); $event.stopPropagation();">
+  <div class="bookBox">
+    <a href="{{book.url}}" target="_blank">
+      <h4>{{book.name}}</h4>
+      <br>
+      <img ng-src="{{book.picture}}" alt="" class="bookThumbnail">
+      <p>{{book.description}}</p>
+    </a>
+  </div>
+    <textarea name="name" rows="8" cols="40" ng-model="requestInfo.message"></textarea>
+    <br>
+    <button type="submit" name="button">Send Review Request</button>
+  </form>
+</div>

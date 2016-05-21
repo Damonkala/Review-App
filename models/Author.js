@@ -13,7 +13,8 @@ var authorSchema = Schema({
 	displayName: {type: String},
 	email: {type: String},
 	picture: {type: String},
-	books: [{type: Schema.Types.ObjectId, ref: "Book"}]
+	books: [{type: Schema.Types.ObjectId, ref: "Book"}],
+	notifications: [{type: Schema.Types.ObjectId, ref: "Notification"}]
 });
 
 authorSchema.methods.createJWT = function() {

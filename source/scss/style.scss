@@ -1,0 +1,57 @@
+$font-stack: Helvetica, sans-serif;
+$primary-background-color: #333;
+$primary-font-color: #49B687;
+$primary-highlight-color: #E5E239;
+$primary-border: 5px solid #202421;
+// $primary-border-color: #202421;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-font-color;
+  background-color: $primary-background-color;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.navBut:hover{
+  cursor: pointer;
+  color: $primary-highlight-color;
+}
+.thumbnail{
+  display:block;
+  margin:auto;
+}
+.bookThumbnail{
+  width: 50%;
+  height: 50%;
+}
+.userSquare{
+  text-align: center;
+  border: $primary-border;
+  width: 250px;
+}
+.bookBox{
+  text-align: center;
+  border: $primary-border;
+  width: 250px;
+}
+.userSquare:hover{
+  background-color: $primary-highlight-color;
+}
+.addBookForm{
+  border: $primary-border;
+  display: inline-block;
+  width: 265px;
+}
+textarea {
+    resize: none;
+}
+.goodButton {
+  background-color: $primary-font-color;
+  width: 200px;
+  height: 50px;
+}
+.center {
+  text-align: center;
+}
