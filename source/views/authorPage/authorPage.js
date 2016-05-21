@@ -10,10 +10,19 @@ angular.module('scaffoldApp')
 	 $scope.author = res.data;
  })
 
+$scope.magicButton = function(){
+	$http.get('/authors/findMe')
+	.then(function(res){
+		console.log(res);
+	})
+}
  $scope.sendRequest = function(requestInfo, book){
 	 var requestObj = requestInfo;
 	 requestObj.reciever = $state.params.id;
 	 requestObj.book = book;
-	 console.log(requestObj);
+	 $http.post('/authors/sendRequest', requestObj)
+	 .then(function (res) {
+	 	console.log(res);
+	 })
  }
 })

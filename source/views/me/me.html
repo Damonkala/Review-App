@@ -2,7 +2,10 @@
 <div>
   <img class='avatar' ng-src="{{user.picture}}" alt="">
 </div>
-
+<h1>Your Review Requests: </h1>
+<div ng-repeat="request in user.requests">
+  {{request.book.name}}
+</div>
 <form ng-submit="addBook(bookInfo); $event.stopPropagation();" class="addBookForm">
   <label for="Name">Name:</label>
   <input type="text" ng-model="bookInfo.name" name="Name"><br>
@@ -28,7 +31,7 @@
 </form>
 <h1>Your books:</h1>
 <div ng-repeat="book in user.books">
-  <a href="{{book.url}}" target="_blank">    
+  <a href="{{book.url}}" target="_blank">
     <div class="bookBox">
       <h4>{{book.name}}</h4>
       <br>

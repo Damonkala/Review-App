@@ -16,6 +16,7 @@ $scope.addBook = function(bookInfo){
 $scope.init = function(){
 	$http.get('/authors/me')
 	.then(function(res) {
+		console.log(res.data);
 		$scope.user = res.data;
 	}, function(err) {
 		console.error(err);

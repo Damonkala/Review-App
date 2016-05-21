@@ -14,8 +14,11 @@ var authorSchema = Schema({
 	email: {type: String},
 	picture: {type: String},
 	books: [{type: Schema.Types.ObjectId, ref: "Book"}],
-	notifications: [{type: Schema.Types.ObjectId, ref: "Notification"}]
+	requests: [{type: Schema.Types.ObjectId, ref: "Request"}],
+	pending: [{type: Schema.Types.ObjectId, ref: "Book"}]
 });
+
+authorSchema.plugin(deepPopulate);
 
 authorSchema.methods.createJWT = function() {
   var payload = {

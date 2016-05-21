@@ -47,11 +47,20 @@ angular.module('scaffoldApp')
 	 $scope.author = res.data;
  })
 
+$scope.magicButton = function(){
+	$http.get('/authors/findMe')
+	.then(function(res){
+		console.log(res);
+	})
+}
  $scope.sendRequest = function(requestInfo, book){
 	 var requestObj = requestInfo;
 	 requestObj.reciever = $state.params.id;
 	 requestObj.book = book;
-	 console.log(requestObj);
+	 $http.post('/authors/sendRequest', requestObj)
+	 .then(function (res) {
+	 	console.log(res);
+	 })
  }
 })
 
@@ -101,6 +110,7 @@ $scope.addBook = function(bookInfo){
 $scope.init = function(){
 	$http.get('/authors/me')
 	.then(function(res) {
+		console.log(res.data);
 		$scope.user = res.data;
 	}, function(err) {
 		console.error(err);
