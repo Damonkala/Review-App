@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower i",
   },
   "author": "",
   "license": "ISC",
@@ -32,7 +34,8 @@
     "querystring": "^0.2.0",
     "request": "^2.72.0",
     "rimraf": "^2.4.4",
-    "satellizer": "^0.14.0"
+    "satellizer": "^0.14.0",
+    "sendgrid": "^2.0.0"
   },
   "devDependencies": {
     "gulp-bower": "0.0.11"

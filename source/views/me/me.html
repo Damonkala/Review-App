@@ -2,9 +2,39 @@
 <div>
   <img class='avatar' ng-src="{{user.picture}}" alt="">
 </div>
-<h1>Your Review Requests: </h1>
+<h1>Your Open Review Requests: </h1>
 <div ng-repeat="request in user.requests">
-  {{request.book.name}}
+  <form ng-submit="acceptRequest(message, request); $event.stopPropagation();" ng-if="request.progress === 'open'">
+  <div class="bookBox">
+    <div>
+      {{request.sender.displayName}}
+    </div>
+    <a href="{{request.book.url}}" target="_blank">
+      <h4>Book: {{request.book.name}}</h4>
+      <br>
+      <img ng-src="{{request.book.picture}}" alt="" class="bookThumbnail">
+      <p>{{request.message}}</p>
+    </a>
+      <textarea name="name" rows="8" cols="40" ng-model="message"></textarea>
+      <br>
+      <button type="submit" name="button" class="goodButton">Accept Review Request</button>
+  </form>
+</div>
+</div>
+<h1>Your Review Requests in progress: </h1>
+<div ng-repeat="request in user.requests">
+  <div class="bookBox" ng-if="request.progress === 'pending'">
+    <div>
+      By: {{request.sender.displayName}}
+    </div>
+    <a href="{{request.book.url}}" target="_blank">
+      <h4>For: {{request.book.name}}</h4>
+      <br>
+      <img ng-src="{{request.book.picture}}" alt="" class="bookThumbnail">
+      <button class="badButton">Cancel</button>
+    </a>
+  </form>
+</div>
 </div>
 <form ng-submit="addBook(bookInfo); $event.stopPropagation();" class="addBookForm">
   <label for="Name">Name:</label>

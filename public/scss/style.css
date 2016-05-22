@@ -24,10 +24,15 @@ a {
   border: 5px solid #202421;
   width: 250px; }
 
+.request {
+  text-align: center;
+  border: 5px solid #202421;
+  width: 300px; }
+
 .bookBox {
   text-align: center;
   border: 5px solid #202421;
-  width: 250px; }
+  width: 300px; }
 
 .userSquare:hover {
   background-color: #E5E239; }
@@ -42,6 +47,11 @@ textarea {
 
 .goodButton {
   background-color: #49B687;
+  width: 200px;
+  height: 50px; }
+
+.badButton {
+  background-color: #FF6161;
   width: 200px;
   height: 50px; }
 

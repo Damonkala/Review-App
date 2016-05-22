@@ -1,9 +1,9 @@
 $font-stack: Helvetica, sans-serif;
 $primary-background-color: #333;
+$rosemary-background-color: #FF6161;
 $primary-font-color: #49B687;
 $primary-highlight-color: #E5E239;
 $primary-border: 5px solid #202421;
-// $primary-border-color: #202421;
 
 body {
   font: 100% $font-stack;
@@ -31,10 +31,15 @@ a {
   border: $primary-border;
   width: 250px;
 }
+.request{
+  text-align: center;
+  border: $primary-border;
+  width: 300px;
+}
 .bookBox{
   text-align: center;
   border: $primary-border;
-  width: 250px;
+  width: 300px;
 }
 .userSquare:hover{
   background-color: $primary-highlight-color;
@@ -49,6 +54,11 @@ textarea {
 }
 .goodButton {
   background-color: $primary-font-color;
+  width: 200px;
+  height: 50px;
+}
+.badButton {
+  background-color: $rosemary-background-color;
   width: 200px;
   height: 50px;
 }

@@ -12,7 +12,8 @@ var requestSchema = Schema({
 	sender: {type: Schema.Types.ObjectId, ref: "Author"},
 	reciever: {type: Schema.Types.ObjectId, ref: "Author"},
 	book: {type: Schema.Types.ObjectId, ref: "Book"},
-	message: {type: String}
+	message: {type: String},
+	progress: {type: String, default: "open"}
 });
 
 
