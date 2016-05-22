@@ -9,8 +9,7 @@ var path = require('path');
 var app = express();
 
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGOLAB_URI);
-// mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/review-project');
+mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://127.0.0.1/review-project');
 
 app.set('views', 'templates');
 app.set('view engine', 'ejs');
