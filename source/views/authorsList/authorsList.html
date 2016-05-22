@@ -2,6 +2,7 @@
 
 <div ng-repeat="author in authorlist track by $index">
   <div ng-click="openProfile(author._id)" class="userSquare">
+    {{author._id}}
     {{author.displayName}}
     <img class="thumbnail" ng-src="{{author.picture}}" alt="" />
     <br>

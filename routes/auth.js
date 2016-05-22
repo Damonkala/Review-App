@@ -17,7 +17,7 @@ router.post('/facebook', function(req, res) {
   var params = {
     code: req.body.code,
     client_id: req.body.clientId,
-    client_secret: process.env.FACEBOOK_SECRET,
+    client_secret: process.env.FACEBOOK_SECRET2,
     redirect_uri: req.body.redirectUri
   };
 console.log("PRAM", params);

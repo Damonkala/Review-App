@@ -24,8 +24,8 @@ router.get('/me', ensureAuthenticated, function(req, res) {
     });
   })
 });
-router.get('/profilePage', ensureAuthenticated, function(req, res) {
-  Author.findById(req.user).populate('books').exec(function(err, author){
+router.get('/profilePage/:id', ensureAuthenticated, function(req, res) {
+  Author.findById(req.params.id).populate('books').exec(function(err, author){
     res.send({
       displayName: author.displayName,
       picture: author.picture,
@@ -61,8 +61,8 @@ router.post('/acceptRequest', ensureAuthenticated, function(req, res){
   console.log("Text: ", req.body.message);
   sendgrid.send({
     to:       req.body.reciever.email,
-    from:     'damonthefox@gmail.com',
-    subject:  req.body.book.name,
+    from:     req.body.sender.email,
+    subject:  `${req.body.sender.displayName} has accepted your review request for ${req.body.book.name}`,
     text:     req.body.message
   }, function(err, json) {
     if (err) { return console.error(err); }
