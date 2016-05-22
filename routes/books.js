@@ -3,8 +3,8 @@
 var express = require('express');
 var router = express.Router();
 var ensureAuthenticated = require('../config/ensureAuthenticated');
-var Book = require('../models/book');
-var Author = require('../models/author');
+var Book = require('../models/Book');
+var Author = require('../models/Author');
 
 router.get('/', function(req, res) {
   Book.find({}, function(err, books){

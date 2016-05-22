@@ -7,7 +7,7 @@ var qs = require('querystring');
 var jwt = require('jwt-simple');
 var request = require('request');
 
-var Author = require('../models/author');
+var Author = require('../models/Author');
 
 router.post('/facebook', function(req, res) {
   var fields = ['id', 'email', 'first_name', 'last_name', 'link', 'name'];

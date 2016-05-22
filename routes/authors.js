@@ -6,9 +6,9 @@ var ensureAuthenticated = require('../config/ensureAuthenticated');
 
 var sendgrid  = require('sendgrid')(process.env.SENDGRID_API_KEY);
 
-var Author = require('../models/author');
-var Request = require('../models/request');
-var Book = require('../models/book');
+var Author = require('../models/Author');
+var Request = require('../models/Request');
+var Book = require('../models/Book');
 
 
 router.get('/me', ensureAuthenticated, function(req, res) {
