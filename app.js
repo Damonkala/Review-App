@@ -9,8 +9,6 @@ var path = require('path');
 var app = express();
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://heroku_cl4v3k7j:67kn771vpqk461agk0d8kvnoso@ds011883.mlab.com:11883/heroku_cl4v3k7j');
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1/review-project');
 
 app.set('views', 'templates');
 app.set('view engine', 'ejs');
