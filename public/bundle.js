@@ -125,9 +125,11 @@ angular.module('scaffoldApp')
 		response.message = message;
 		response.book = request.book;
 		response.requestID = request.id;
+		
 		$http.post('/authors/acceptRequest', response)
 		.then(function(res){
 			console.log(res);
+			$scope.init();
 		})
 	}
 	$scope.init();
