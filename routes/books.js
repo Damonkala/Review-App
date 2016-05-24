@@ -14,7 +14,16 @@ router.get('/', function(req, res) {
 })
 router.get('/bookPage/:id', ensureAuthenticated, function(req, res) {
   Book.findById(req.params.id).populate('author').exec(function(err, book){
-    res.send(book);
+
+    res.send({
+      isAuthor: book.author._id == req.user,
+      name: book.name,
+      picture: book.picture,
+      description: book.description,
+      author: book.author,
+      reviewsWanted: book.reviewsWanted,
+      url: book.url
+    });
   })
 });
 

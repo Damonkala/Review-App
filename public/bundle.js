@@ -90,6 +90,7 @@ angular.module('scaffoldApp')
  $http.get(`/books/bookPage/${$state.params.id}`)
  .then(function(res){
 	 $scope.book = res.data;
+	 $scope.isAuthor = res.data.isAuthor;
 	 console.log($scope.book);
  })
 })
