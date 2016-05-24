@@ -86,13 +86,27 @@ angular.module('scaffoldApp')
 	if(!$auth.isAuthenticated()){
 	 return $state.go('home');
  }
- console.log("id", $state.params.id);
  $http.get(`/books/bookPage/${$state.params.id}`)
  .then(function(res){
 	 $scope.book = res.data;
 	 $scope.isAuthor = res.data.isAuthor;
-	 console.log($scope.book);
  })
+ $scope.ama = function(url){
+	 $http.post('books/lookup/', url)
+	 .then(function(res){
+		 console.log(res);
+	 })
+ }
+ $scope.sendRequest = function(message, book){
+	 var requestObj = book;
+	 requestObj.message = message;
+	 requestObj.reciever = book.author._id;
+	 requestObj.book = book._id;
+	 $http.post('/authors/sendRequest', requestObj)
+	 .then(function (res) {
+	 	console.log(res);
+	 })
+ }
 })
 
 'use strict';

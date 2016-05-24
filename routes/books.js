@@ -5,11 +5,17 @@ var router = express.Router();
 var ensureAuthenticated = require('../config/ensureAuthenticated');
 var Book = require('../models/Book');
 var Author = require('../models/Author');
-
+var http = require('http')
+var https = require('https')
 router.get('/', function(req, res) {
   Book.find({}).populate('author').exec(function(err, author){
     console.log(books);
     res.send(books);
+  })
+})
+router.post('/lookup', function(req, res){
+  https.get(req.body.url, function(res){
+    console.log(res);
   })
 })
 router.get('/bookPage/:id', ensureAuthenticated, function(req, res) {
