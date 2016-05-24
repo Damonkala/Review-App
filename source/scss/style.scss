@@ -61,6 +61,11 @@ textarea {
   width: 200px;
   height: 50px;
 }
+.biggerButton {
+  background-color: $primary-font-color;
+  width: 360px;
+  height: 50px;
+}
 .badButton {
   background-color: $rosemary-background-color;
   width: 200px;
@@ -71,4 +76,17 @@ textarea {
 }
 .navbar {
   text-align: right;
+}
+.bookCard {
+  display: inline-block;
+  width: 100%;
+  margin: auto;
+}
+.bookStuff{
+  margin-left: 350px;
+  height: 200px;
+  border: $primary-border;
+}
+.butts{
+  margin-left: 350px;
 }

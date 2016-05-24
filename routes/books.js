@@ -13,12 +13,8 @@ router.get('/', function(req, res) {
   })
 })
 router.get('/bookPage/:id', ensureAuthenticated, function(req, res) {
-  Book.findById(req.params.id).populate('author').exec(function(err, author){
-    res.send({
-      name: book.displayName,
-      author: book.author,
-      reviewsWanted: book.reviewsWanted
-    });
+  Book.findById(req.params.id).populate('author').exec(function(err, book){
+    res.send(book);
   })
 });
 

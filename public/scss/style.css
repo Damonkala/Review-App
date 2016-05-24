@@ -54,6 +54,11 @@ textarea {
   width: 200px;
   height: 50px; }
 
+.biggerButton {
+  background-color: #49B687;
+  width: 360px;
+  height: 50px; }
+
 .badButton {
   background-color: #FF6161;
   width: 200px;
@@ -64,3 +69,16 @@ textarea {
 
 .navbar {
   text-align: right; }
+
+.bookCard {
+  display: inline-block;
+  width: 100%;
+  margin: auto; }
+
+.bookStuff {
+  margin-left: 350px;
+  height: 200px;
+  border: 5px solid #202421; }
+
+.butts {
+  margin-left: 350px; }

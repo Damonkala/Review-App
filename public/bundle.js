@@ -16,6 +16,7 @@ var app = angular.module('scaffoldApp', ['ui.router', 'satellizer'])
 	.state('booksList', {url: '/booksList', templateUrl: 'views/booksList/booksList.html', controller: 'booksListCtrl'})
 	.state('me', {url: '/me', templateUrl: 'views/me/me.html', controller: 'meCtrl'})
 	.state('authorPage', {url: '/authorPage/:id', templateUrl: 'views/authorPage/authorPage.html', controller: 'authorPageCtrl'})
+	.state('bookPage', {url: '/bookPage/:id', templateUrl: 'views/bookPage/bookPage.html', controller: 'bookPageCtrl'})
 })
 
 'use strict';
@@ -76,6 +77,21 @@ $scope.openProfile = function(author){
  }, function(err) {
 	 console.error(err);
  });
+})
+
+'use strict';
+
+angular.module('scaffoldApp')
+.controller('bookPageCtrl', function($scope, $auth, $http, $state){
+	if(!$auth.isAuthenticated()){
+	 return $state.go('home');
+ }
+ console.log("id", $state.params.id);
+ $http.get(`/books/bookPage/${$state.params.id}`)
+ .then(function(res){
+	 $scope.book = res.data;
+	 console.log($scope.book);
+ })
 })
 
 'use strict';
