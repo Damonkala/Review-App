@@ -10,9 +10,10 @@
   </head>
   <body ng-app="scaffoldApp">
     <h1>Reviewer</h1>
-    <div ng-controller="navCtrl">
+    <div ng-controller="navCtrl" class="navbar">
       <span ng-if="isAuthenticated()">
         <span ui-sref="me" class="navBut">profile</span>
+        <span ui-sref="booksList" class="navBut">books</span>
         <span ui-sref="authorsList" class="navBut">users</span>
         <span ng-click="logout()" class="navBut">logout</span></span>
         <span ng-if="!isAuthenticated()" ng-click="authenticate('facebook')">Facebook Signin</span>

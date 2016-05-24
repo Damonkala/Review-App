@@ -30,12 +30,16 @@ a {
   width: 300px; }
 
 .bookBox {
+  margin: 10px;
+  display: inline-block;
   text-align: center;
   border: 5px solid #202421;
-  width: 300px; }
+  width: 300px;
+  float: left; }
 
-.userSquare:hover {
-  background-color: #E5E239; }
+.userSquare:hover, .bookBox:hover {
+  background-color: #E5E239;
+  cursor: pointer; }
 
 .addBookForm {
   border: 5px solid #202421;
@@ -57,3 +61,6 @@ textarea {
 
 .center {
   text-align: center; }
+
+.navbar {
+  text-align: right; }

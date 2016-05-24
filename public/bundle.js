@@ -13,6 +13,7 @@ var app = angular.module('scaffoldApp', ['ui.router', 'satellizer'])
 	$stateProvider
 	.state('home', {url: '/', templateUrl: 'views/home/home.html', controller: 'homeCtrl'})
 	.state('authorsList', {url: '/authorsList', templateUrl: 'views/authorsList/authorsList.html', controller: 'authorsListCtrl'})
+	.state('booksList', {url: '/booksList', templateUrl: 'views/booksList/booksList.html', controller: 'booksListCtrl'})
 	.state('me', {url: '/me', templateUrl: 'views/me/me.html', controller: 'meCtrl'})
 	.state('authorPage', {url: '/authorPage/:id', templateUrl: 'views/authorPage/authorPage.html', controller: 'authorPageCtrl'})
 })
@@ -43,7 +44,7 @@ angular.module('scaffoldApp')
 	 return $state.go('home');
  }
  console.log("id", $state.params.id);
- $http.get(`/authors/profilePage/${$state.params.id}`)
+ $http.get('/authors/profilePage', $state.params.id)
  .then(function(res){
 	 $scope.author = res.data;
  })
@@ -72,6 +73,25 @@ $scope.openProfile = function(author){
  $http.get('/authors/list')
  .then(function(res) {
 	 $scope.authorlist = res.data;
+ }, function(err) {
+	 console.error(err);
+ });
+})
+
+'use strict';
+
+angular.module('scaffoldApp')
+.controller('booksListCtrl', function($scope, $auth, $http, $state){
+	if(!$auth.isAuthenticated()){
+	 return $state.go('home');
+ }
+$scope.openBook = function(book){
+	$state.go('bookPage', {id: book});
+}
+ $http.get('/books/list')
+ .then(function(res) {
+	 $scope.booklist = res.data;
+	 console.log($scope.booklist);
  }, function(err) {
 	 console.error(err);
  });
@@ -120,7 +140,7 @@ angular.module('scaffoldApp')
 		response.message = message;
 		response.book = request.book;
 		response.requestID = request.id;
-
+		
 		$http.post('/authors/acceptRequest', response)
 		.then(function(res){
 			console.log(res);

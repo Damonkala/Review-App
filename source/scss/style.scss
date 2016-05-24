@@ -37,12 +37,16 @@ a {
   width: 300px;
 }
 .bookBox{
+  margin: 10px;
+  display: inline-block;
   text-align: center;
   border: $primary-border;
   width: 300px;
+  float: left;
 }
-.userSquare:hover{
+.userSquare:hover, .bookBox:hover{
   background-color: $primary-highlight-color;
+  cursor: pointer;
 }
 .addBookForm{
   border: $primary-border;
@@ -50,7 +54,7 @@ a {
   width: 265px;
 }
 textarea {
-    resize: none;
+  resize: none;
 }
 .goodButton {
   background-color: $primary-font-color;
@@ -64,4 +68,7 @@ textarea {
 }
 .center {
   text-align: center;
+}
+.navbar {
+  text-align: right;
 }
