@@ -22,6 +22,7 @@
     "gulp-bower": "0.0.11",
     "gulp-concat": "^2.6.0",
     "gulp-copy": "0.0.2",
+    "gulp-livereload": "^3.8.1",
     "gulp-nodemon": "^2.0.7",
     "gulp-run": "^1.6.11",
     "gulp-sass": "^2.3.1",

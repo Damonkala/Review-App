@@ -18,7 +18,7 @@ router.post('/lookup', function(req, res){
     console.log(res);
   })
 })
-router.get('/bookPage/:id', ensureAuthenticated, function(req, res) {
+router.get('/bookPage/:id', function(req, res) {
   Book.findById(req.params.id).populate('author').exec(function(err, book){
 
     res.send({
@@ -33,7 +33,7 @@ router.get('/bookPage/:id', ensureAuthenticated, function(req, res) {
   })
 });
 
-router.get('/list', ensureAuthenticated, function(req, res) {
+router.get('/list', function(req, res) {
   Book.find({}).populate('author').exec(function(err, author){
     res.send(author);
   })
