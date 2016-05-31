@@ -8,7 +8,9 @@ angular.module('scaffoldApp')
 	 $scope.author = res.data;
 	 console.log($scope.author);
  })
-
+ $scope.openBook = function(book){
+ 	$state.go('bookPage', {id: book});
+ }
  $scope.sendRequest = function(requestInfo, book){
 	 var requestObj = requestInfo;
 	 requestObj.reciever = $state.params.id;
