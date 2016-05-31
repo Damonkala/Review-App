@@ -5,8 +5,27 @@ var router = express.Router();
 var ensureAuthenticated = require('../config/ensureAuthenticated');
 var Book = require('../models/Book');
 var Author = require('../models/Author');
-var http = require('http')
-var https = require('https')
+var http = require('http');
+var https = require('https');
+
+var multer = require('multer');
+
+var router = express.Router();
+
+var upload = multer({
+  storage: multer.memoryStorage(),
+  limits: {
+    filesize: 1000000 * 10
+  }
+});
+
+router.post('/', upload.single('newFile'), function(req, res){
+  Book.upload(req.file, (err, pdf) => {
+    console.log('pdf:', pdf);
+    res.status(err ? 400 : 200).send(err || pdf);
+  });
+});
+
 router.get('/', function(req, res) {
   Book.find({}).populate('author').exec(function(err, author){
     console.log(books);

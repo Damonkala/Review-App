@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('scaffoldApp', ['ui.router', 'satellizer', 'oitozero.ngSweetAlert'])
+var app = angular.module('scaffoldApp', ['ui.router', 'satellizer', 'oitozero.ngSweetAlert', 'ngFileUpload'])
 
 
 .config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider){
@@ -146,9 +146,29 @@ angular.module('scaffoldApp')
 'use strict';
 
 angular.module('scaffoldApp')
-.controller('meCtrl', function($scope, $auth, $http, $state){
+.controller('meCtrl', function($scope, $auth, $http, $state, Upload){
 	if(!$auth.isAuthenticated()){
 		return $state.go('home');
+	}
+
+	$scope.submit = () => {
+		upload($scope.file);
+	};
+
+	$scope.upload = files => {
+		upload(files[0]);
+	};
+	function upload(file) {
+		Upload.upload({
+			url: '/books',
+			data: { newFile: file }
+		})
+		.then(res => {
+			console.log('res:', res);
+		})
+		.catch(err => {
+			console.log('err:', err);
+		})
 	}
 	$scope.addBook = function(bookInfo){
 		var book = bookInfo;
