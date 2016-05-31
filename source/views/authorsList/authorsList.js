@@ -2,9 +2,6 @@
 
 angular.module('scaffoldApp')
 .controller('authorsListCtrl', function($scope, $auth, $http, $state){
-	if(!$auth.isAuthenticated()){
-	 return $state.go('home');
- }
 $scope.openProfile = function(author){
 	$state.go('authorPage', {id: author});
 }

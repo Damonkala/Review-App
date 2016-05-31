@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('scaffoldApp', ['ui.router', 'satellizer'])
+var app = angular.module('scaffoldApp', ['ui.router', 'satellizer', 'oitozero.ngSweetAlert'])
 
 
 .config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider){

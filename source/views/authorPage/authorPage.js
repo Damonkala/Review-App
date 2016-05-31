@@ -2,13 +2,11 @@
 
 angular.module('scaffoldApp')
 .controller('authorPageCtrl', function($scope, $auth, $http, $state){
-	if(!$auth.isAuthenticated()){
-	 return $state.go('home');
- }
  console.log("id", $state.params.id);
- $http.get('/authors/profilePage', $state.params.id)
+ $http.get(`/authors/profilePage/${$state.params.id}`)
  .then(function(res){
 	 $scope.author = res.data;
+	 console.log($scope.author);
  })
 
  $scope.sendRequest = function(requestInfo, book){

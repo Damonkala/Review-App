@@ -5,6 +5,9 @@ $primary-font-color: #49B687;
 $primary-highlight-color: #E5E239;
 $primary-border: 5px solid #202421;
 
+hr {
+  border-color: $primary-font-color;
+}
 body {
   font: 100% $font-stack;
   color: $primary-font-color;
@@ -27,6 +30,9 @@ a {
   height: 50%;
 }
 .userSquare{
+  margin: 10px;
+  display: inline-block;
+  float: left;
   text-align: center;
   border: $primary-border;
   width: 250px;

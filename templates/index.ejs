@@ -3,20 +3,21 @@
   <head>
     <base href="/">
     <meta charset="UTF-8">
-    <title>scaffold</title>
+    <title>Author Appraise</title>
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="scss/style.css">
+    <link rel="stylesheet" href="/assets/sweetalert;/dist/sweetalert.css">
   </head>
   <body ng-app="scaffoldApp">
-    <h1>Reviewer</h1>
+    <h1>Author Appraise</h1>
     <div ng-controller="navCtrl" class="navbar">
-      <span ui-sref="booksList" class="navBut">books</span>
+      <span ui-sref="booksList" class="navBut">Books</span>
+      <span ui-sref="authorsList" class="navBut">Users</span>
       <span ng-if="isAuthenticated()">
-        <span ui-sref="me" class="navBut">profile</span>
-        <span ui-sref="authorsList" class="navBut">users</span>
-        <span ng-click="logout()" class="navBut">logout</span></span>
-        <span ng-if="!isAuthenticated()" ng-click="authenticate('facebook')">Facebook Signin</span>
+        <span ui-sref="me" class="navBut">Profile</span>
+        <span ng-click="logout()" class="navBut">Logout</span></span>
+        <span ng-if="!isAuthenticated()" ng-click="authenticate('facebook')" class="navBut">Facebook Signin</span>
     </div>
     <hr>
     <div ui-view></div>
@@ -24,6 +25,9 @@
     <script src="assets/angular/angular.min.js"></script>
     <script src="assets/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="/assets/satellizer/satellizer.min.js"></script>
+    <script src="/assets/ngSweetAlert/SweetAlert.min.js"></script>
+    <script src="/assets/sweetalert/dist/sweetalert.min.js"></script>
+
     <script src="bundle.js"></script>
   </body>
 </html>

@@ -24,8 +24,9 @@ router.get('/me', ensureAuthenticated, function(req, res) {
     });
   })
 });
-router.get('/profilePage/:id', ensureAuthenticated, function(req, res) {
+router.get('/profilePage/:id', function(req, res) {
   Author.findById(req.params.id).populate('books').exec(function(err, author){
+    console.log(author);
     res.send({
       displayName: author.displayName,
       picture: author.picture,
@@ -34,7 +35,7 @@ router.get('/profilePage/:id', ensureAuthenticated, function(req, res) {
   })
 });
 
-router.get('/list', ensureAuthenticated, function(req, res) {
+router.get('/list', function(req, res) {
   Author.find(function(err, data){
     res.send(data);
   })

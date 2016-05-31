@@ -1,3 +1,6 @@
+hr {
+  border-color: #49B687; }
+
 body {
   font: 100% Helvetica, sans-serif;
   color: #49B687;
@@ -20,6 +23,9 @@ a {
   height: 50%; }
 
 .userSquare {
+  margin: 10px;
+  display: inline-block;
+  float: left;
   text-align: center;
   border: 5px solid #202421;
   width: 250px; }

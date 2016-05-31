@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('scaffoldApp', ['ui.router', 'satellizer'])
+var app = angular.module('scaffoldApp', ['ui.router', 'satellizer', 'oitozero.ngSweetAlert'])
 
 
 .config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider){
@@ -41,13 +41,11 @@ angular.module('scaffoldApp')
 
 angular.module('scaffoldApp')
 .controller('authorPageCtrl', function($scope, $auth, $http, $state){
-	if(!$auth.isAuthenticated()){
-	 return $state.go('home');
- }
  console.log("id", $state.params.id);
- $http.get('/authors/profilePage', $state.params.id)
+ $http.get(`/authors/profilePage/${$state.params.id}`)
  .then(function(res){
 	 $scope.author = res.data;
+	 console.log($scope.author);
  })
 
  $scope.sendRequest = function(requestInfo, book){
@@ -65,9 +63,6 @@ angular.module('scaffoldApp')
 
 angular.module('scaffoldApp')
 .controller('authorsListCtrl', function($scope, $auth, $http, $state){
-	if(!$auth.isAuthenticated()){
-	 return $state.go('home');
- }
 $scope.openProfile = function(author){
 	$state.go('authorPage', {id: author});
 }
@@ -82,40 +77,44 @@ $scope.openProfile = function(author){
 'use strict';
 
 angular.module('scaffoldApp')
-.controller('bookPageCtrl', function($scope, $auth, $http, $state){
- if(!$auth.isAuthenticated()){
-   console.log('NOT LOGED in');
-   $scope.loggedIn = false;
- } else {
-   $scope.loggedIn = true;
- }
- $http.get(`/books/bookPage/${$state.params.id}`)
- .then(function(res){
-	 $scope.book = res.data;
-	 $scope.isAuthor = res.data.isAuthor;
- })
- $scope.sendRequest = function(message, book){
-	 var requestObj = book;
-	 requestObj.message = message;
-	 requestObj.reciever = book.author._id;
-	 requestObj.book = book._id;
-	 $http.post('/authors/sendRequest', requestObj)
-	 .then(function (res) {
-	 	console.log(res);
-	 })
- }
- $scope.loginAndRequest = function(message, book){
-   $auth.authenticate('facebook').then(function(res){
-     var requestObj = book;
-     requestObj.message = message;
-     requestObj.reciever = book.author._id;
-     requestObj.book = book._id;
-     $http.post('/authors/sendRequest', requestObj)
-     .then(function (res) {
-       console.log(res);
-     })
-   })
- }
+.controller('bookPageCtrl', function($scope, $auth, $http, $state, SweetAlert){
+  if(!$auth.isAuthenticated()){
+    console.log('NOT LOGED in');
+    $scope.loggedIn = false;
+  } else {
+    $scope.loggedIn = true;
+  }
+  $http.get(`/books/bookPage/${$state.params.id}`)
+  .then(function(res){
+    $scope.book = res.data;
+    $scope.isAuthor = res.data.isAuthor;
+  })
+  $scope.sendRequest = function(message, book){
+    var requestObj = book;
+    requestObj.message = message;
+    requestObj.reciever = book.author._id;
+    requestObj.book = book._id;
+    $http.post('/authors/sendRequest', requestObj)
+    .then(function (res) {
+      console.log(res);
+    })
+  }
+  $scope.loginAndRequest = function(message, book){
+    $auth.authenticate('facebook').then(function(res){
+      var requestObj = book;
+      requestObj.message = message;
+      requestObj.reciever = book.author._id;
+      requestObj.book = book._id;
+      $http.post('/authors/sendRequest', requestObj)
+      .then(function (res) {
+        console.log("Hit the thing?");
+        SweetAlert.swal("Here's a message");
+        $scope.message = '';
+        $scope.loggedIn = true;
+        console.log(res);
+      })
+    })
+  }
 })
 
 'use strict';
@@ -177,7 +176,7 @@ angular.module('scaffoldApp')
 		response.message = message;
 		response.book = request.book;
 		response.requestID = request.id;
-		
+
 		$http.post('/authors/acceptRequest', response)
 		.then(function(res){
 			console.log(res);
